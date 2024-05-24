@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+	'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='ch03.ex02.Map'>
+	<select id='selectUsers' resultMap='userMap'>
+		select users.user_id, user_name, reg_Date, address
+		from users join addresses
+		on users.user_id = addresses.user_id
+		order by user_id
+	</select>
+	
+	
+	<resultMap id='userMap' type='myUser'>
+		<id property='userId' column='user_id'/>
+		<result property='userName' column='user_name'/>
+		<result property='regDate' column='reg_date'/>
+		<association property='address' resultMap='addressMap'/>
+	</resultMap>
+	
+	
+	
+	
+	<resultMap id='addressMap' type='address'>
+		<result property='address' column='address'/>
+	</resultMap>
+</mapper>
+<!-- ch03.ex01과 ch03.ex02의 차이는 select로 address객체를 생성하느냐, resultMap으로 address 객체를 생성하느냐의 차이 -->
+<!-- join으로 이뤄질 경우 resultMap으로 별도 지정이 있어야 한다. -->

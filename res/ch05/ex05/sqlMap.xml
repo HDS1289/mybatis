@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org/DTD mapper 3.0//EN'
+	'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='ch05.ex05.Map'>
+	<select id='selectUser' resultType='ch05.domain.User'>
+		select user_id userId, user_name userName, reg_date regDate
+		from users
+		<if test='_parameter != null and _parameter.equals("king")'>
+			where user_name = #{userName}
+		</if>
+	</select>
+</mapper>
+<!-- parameter가 한 개 뿐일 경우에 _parameter로 지칭할 수 있다. -->
+<!-- String userName이라는 parameter 한 개 밖에 없다. -->
