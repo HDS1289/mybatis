@@ -10,7 +10,7 @@
 		)
 	</insert>
 	
-	<!-- parameter name과 variable name이 일치하지 않는 것으로는 해결 안됨. -->
+	<!-- parameter name과 variable name이 일치하는 것만으로는 해결 안됨. -->
 	<insert id='insertUser2'>
 		insert into users values(
 			#{userId},
